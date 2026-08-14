@@ -1,26 +1,204 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAFAF8;
+  --bg-elevated: #F5F5F2;
+  --bg-dark-slate: #0f172a; /* Sleek dark theme */
+  --accent-primary: #FF6A00; /* Vibrant Orange */
+  --accent-hover: #E65F00;
+  --text-primary: #000000;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --border-subtle: #E5E7EB;
+  --border-medium: #D1D5DB;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 36px;
+  --spacing-xl: 64px;
+  --spacing-section: 128px;
+
+  /* Rounded */
+  --rounded-none: 0px;
+  --rounded-sm: 2px;
+  --rounded-base: 4px;
+
+  /* Grid */
+  --grid-gap: 24px;
+  --container-padding: 32px;
+  --max-width: 1280px;
+
+  /* Motion */
+  --reveal-transition: 700ms cubic-bezier(.16, 1, .3, 1);
+  --hover-transition: 300ms ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.625;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Typography Classes */
+.display-text {
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+.heading-text {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.body-text {
+  font-weight: 400;
+  line-height: 1.625;
+  font-size: 1rem;
+}
+
+.body-text-lg {
+  font-weight: 500;
+  line-height: 1.6;
+  font-size: 1.25rem;
+}
+
+.label-text {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Layout Classes */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--spacing-section) 0;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+/* Utilities */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-dark-slate {
+  background-color: var(--bg-dark-slate);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.accent-color {
+  color: var(--accent-primary);
+}
+
+/* Animations */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: revealUp var(--reveal-transition) forwards;
+}
+
+.reveal-delay-1 {
+  animation-delay: 150ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 300ms;
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Button Classes */
+.sm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 32px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--hover-transition);
+  border: none;
+  outline: none;
+}
+.sm-btn:focus-visible {
+  outline: 4px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+.sm-btn-primary {
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+  border-radius: var(--rounded-sm);
+}
+.sm-btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+.sm-btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--rounded-none);
+}
+.sm-btn-outline:hover {
+  border-color: var(--text-primary);
+}
+.sm-btn-ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-radius: var(--rounded-none);
+}
+.sm-btn-ghost:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
