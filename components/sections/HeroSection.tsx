@@ -61,12 +61,12 @@ export default function HeroSection() {
             marginBottom: '1rem', 
             color: '#FFFFFF',
             textShadow: '0 4px 20px rgba(0,0,0,0.5)',
-            lineHeight: 1.05,
-            fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+            lineHeight: 1.1,
+            fontSize: 'clamp(3rem, 5vw, 5rem)',
             fontWeight: 800,
             letterSpacing: '-0.02em',
           }}>
-            HP MARKET:<br/>A Modern Solution for a<br/>Long-Standing Problem.
+            HP MARKET:<br/>The Modern Wholesale Hub.
           </h1>
           
           {/* Supporting Text */}
