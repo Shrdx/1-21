@@ -4,8 +4,8 @@ export default function HeroImage() {
   return (
     <div className="relative overflow-hidden rounded-[32px]">
       <Image
-        src="/images/hero/building.jpg"
-        alt="Building"
+        src="/images/hero/sabmarket-building.jpg"
+        alt="SABMARKET Building"
         width={1800}
         height={1200}
         priority

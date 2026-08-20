@@ -133,7 +133,7 @@ export default function Navbar() {
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <a href="#brochure" style={{
+          <a href="/hp_market_brochure.pdf" target="_blank" rel="noopener noreferrer" style={{
             display: 'inline-flex',
             alignItems: 'center',
             backgroundColor: 'transparent',

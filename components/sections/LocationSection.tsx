@@ -8,8 +8,7 @@ export default function LocationSection() {
     { time: "200 Meters", name: "New Delhi Metro Station ", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 9l5.4 3.1L5.9 14 3.5 13l-1.5 1 2 4 4 2 1-1.5-1-2.4 1.9-2L15 21.5c.4-.2.7-.6.6-1.1l-1.8-8.2z" /></svg> },
     { time: "150 Meters", name: "Ajmeri Gate Chowk", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline><path d="M10 8h4M12 6v4" /></svg> },
     { time: "0 Meters", name: "Kamla Market Transport", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg> },
-    { time: "0 Meters", name: "MCD Authorised Parking", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg> },
-
+    { time: "0 Meters", name: "MCD Auth. Parking", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg> },
   ];
 
   return (
@@ -29,7 +28,7 @@ export default function LocationSection() {
               maxWidth: '600px',
               color: '#ffffff'
             }}>
-              An Address That<br />Puts You In The Spotlight
+              Prime Location.<br />Smart Connectivity.
             </h2>
             <p style={{
               fontSize: '1.25rem',
@@ -39,7 +38,7 @@ export default function LocationSection() {
               maxWidth: '500px',
               marginBottom: 'auto'
             }}>
-              Strategically located near the International Airport and all arterial roads, Central Square ensures effortless access for businesses and visitors.
+              Situated near Ajmeri Gate in the established wholesale hub of Central Delhi, HP Market ensures effortless access for businesses and transport.
             </p>
 
             {/* Nearby Section */}

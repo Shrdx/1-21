@@ -21,7 +21,7 @@ export default function HeroSection() {
         zIndex: 0,
       }}>
         <Image
-          src="/images/hero/building.jpg"
+          src="/images/hero/sabmarket-building.jpg"
           alt="Premium Commercial Building"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -66,7 +66,7 @@ export default function HeroSection() {
             fontWeight: 800,
             letterSpacing: '-0.02em',
           }}>
-            A New Standard In <br/>Commercial Excellence.
+            HP MARKET:<br/>A Modern Solution for a<br/>Long-Standing Problem.
           </h1>
           
           {/* Supporting Text */}
@@ -78,7 +78,7 @@ export default function HeroSection() {
             textShadow: '0 2px 10px rgba(0,0,0,0.5)',
             fontWeight: 500,
           }}>
-            Premium spaces designed with considered restraint in the heart of Central Delhi.
+            Hardware & Powertool Market in the Heart of Central Delhi, Asaf Ali Road.
           </p>
           
           {/* CTAs */}
