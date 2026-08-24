@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 
 const navigation = [
   { title: "Home", href: "/" },
-  { title: "About", href: "#about" },
+  { title: "About", href: "/#about" },
   { title: "Why Us", href: "#why-us" },
-  { title: "Map", href: "#location" },
-  { title: "Contact", href: "#contact" },
+  { title: "Map", href: "/#location" },
+  { title: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -107,8 +107,8 @@ export default function Navbar() {
                       padding: '8px 0',
                       zIndex: 100
                     }}>
-                      <Link href="#location" onClick={() => setIsWhyUsOpen(false)} style={{ padding: '10px 16px', color: '#111827', textDecoration: 'none', fontSize: '0.95rem', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>Location Advantage</Link>
-                      <Link href="#spaces" onClick={() => setIsWhyUsOpen(false)} style={{ padding: '10px 16px', color: '#111827', textDecoration: 'none', fontSize: '0.95rem', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>Spaces We Offer</Link>
+                      <Link href="/#location" onClick={() => setIsWhyUsOpen(false)} style={{ padding: '10px 16px', color: '#111827', textDecoration: 'none', fontSize: '0.95rem', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>Location Advantage</Link>
+                      <Link href="/#spaces" onClick={() => setIsWhyUsOpen(false)} style={{ padding: '10px 16px', color: '#111827', textDecoration: 'none', fontSize: '0.95rem', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>Spaces We Offer</Link>
                     </div>
                   )}
                 </>
@@ -158,7 +158,7 @@ export default function Navbar() {
             Download Brochure
           </a>
 
-          <a href="#visit" style={{
+          <Link href="/contact" style={{
             display: 'inline-flex',
             alignItems: 'center',
             backgroundColor: 'var(--accent-primary)',
@@ -174,7 +174,7 @@ export default function Navbar() {
             onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
           >
             Book A Free Site Visit
-          </a>
+          </Link>
         </div>
       </div>
     </header>

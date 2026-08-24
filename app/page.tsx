@@ -2,12 +2,11 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutBuilding from "@/components/sections/AboutBuilding";
-import BuildingHighlights from "@/components/sections/BuildingHighlights";
+import AmenitiesSection from "@/components/sections/AmenitiesSection";
 import GallerySection from "@/components/sections/GallerySection";
 import LocationSection from "@/components/sections/LocationSection";
-import AmenitiesSection from "@/components/sections/AmenitiesSection";
+import SpacesSection from "@/components/sections/SpacesSection";
 import CtaSection from "@/components/sections/CtaSection";
-import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -17,12 +16,11 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutBuilding />
-        <BuildingHighlights />
+        <AmenitiesSection />
         <GallerySection />
         <LocationSection />
-        <AmenitiesSection />
+        <SpacesSection />
         <CtaSection />
-        <ContactSection />
       </main>
 
       <Footer />
