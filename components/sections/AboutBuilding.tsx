@@ -1,134 +1,115 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React from 'react';
+import styles from './AboutBuilding.module.css';
 
 export default function AboutBuilding() {
-  const images = ['/kamla.webp', '/new delhi metro.jpg', '/nse.webp'];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
-    <section id="about" style={{ padding: '120px 0', backgroundColor: '#ffffff', overflow: 'hidden' }}>
-      <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px' }}>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-          gap: '80px',
-          alignItems: 'center'
-        }}>
-          
-          {/* Left Column: Text */}
-          <div className="reveal-up">
-            <h2 className="display-text" style={{ 
-              marginBottom: '32px',
-              textTransform: 'none',
-              color: '#111827',
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em'
-            }}>
-              A Modern Solution for a<br/>Long-Standing Problem
-            </h2>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginBottom: '40px' }}>
-              
-              {/* Problem Block */}
-              <div style={{ 
-                paddingLeft: '24px', 
-                borderLeft: '4px solid #ef4444',
-              }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827', marginBottom: '12px' }}>
-                  The Problem
-                </h3>
-                <p style={{ color: '#4b5563', fontSize: '1.125rem', lineHeight: 1.6 }}>
-                  Old Delhi houses the biggest wholesale traders, but the infrastructure of yesterday creates the problems of today—unplanned roads, chaotic traffic, no parking, fire hazards, and lack of amenities.
-                </p>
-              </div>
+    <section id="about" className={styles.section}>
+      
+      {/* TOP HEADER */}
+      <div className={styles.topContainer}>
+        <span className={`reveal-up ${styles.eyebrow}`}>About HP Market</span>
+        <h2 className={`reveal-up ${styles.massiveHeadline}`}>
+          A Better Standard<br />For Commercial Spaces
+        </h2>
+      </div>
 
-              {/* Solution Block */}
-              <div style={{ 
-                paddingLeft: '24px', 
-                borderLeft: '4px solid #10b981',
-              }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827', marginBottom: '12px' }}>
-                  The Solution
-                </h3>
-                <p style={{ color: '#4b5563', fontSize: '1.125rem', lineHeight: 1.6 }}>
-                  HP Market brings a specialized, freehold, air-conditioned, ready-to-move-in Hardware and Powertool Market with 5-star amenities. A safer environment, stronger business, and a better future.
-                </p>
-              </div>
+      {/* HERO IMAGE */}
+      <div className={`reveal-up reveal-delay-1 ${styles.heroImageWrapper}`}>
+        <img 
+          src="/new delhi metro.jpg" 
+          alt="HP Market Location" 
+          className={styles.heroImage}
+        />
+      </div>
 
-            </div>
-
-            <a href="#details" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              backgroundColor: 'var(--accent-primary)',
-              color: '#ffffff',
-              padding: '16px 32px',
-              borderRadius: '4px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              fontSize: '1.125rem',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 14px 0 rgba(249, 115, 22, 0.39)'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(249, 115, 22, 0.23)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(249, 115, 22, 0.39)';
-            }}
-            >
-              Learn More About The Project
-            </a>
+      {/* STATS & INTRO */}
+      <div className={styles.statsIntroContainer}>
+        <div className={`reveal-up ${styles.statsGrid}`}>
+          <div className={styles.statItem}>
+            <h3>100%</h3>
+            <p>Commercial Focus</p>
           </div>
-
-          {/* Right Column: Image Slider */}
-          <div className="reveal-up reveal-delay-1" style={{ position: 'relative' }}>
-            <div style={{
-              position: 'relative',
-              width: '100%',
-              aspectRatio: '4/5',
-              borderRadius: '24px',
-              overflow: 'hidden',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-            }}>
-              {images.map((src, index) => (
-                <img 
-                  key={index}
-                  src={src} 
-                  alt={`Slide ${index + 1}`} 
-                  style={{ 
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%', 
-                    height: '100%', 
-                    objectFit: 'cover',
-                    opacity: currentImageIndex === index ? 1 : 0,
-                    transition: 'opacity 1s ease-in-out'
-                  }} 
-                />
-              ))}
-              
-
-
-            </div>
+          <div className={styles.statItem}>
+            <h3>24/7</h3>
+            <p>Security & Access</p>
           </div>
-
+          <div className={styles.statItem}>
+            <h3>A+</h3>
+            <p>Modern Amenities</p>
+          </div>
+        </div>
+        <div className={`reveal-up ${styles.introText}`}>
+          <p>
+            A well-planned commercial environment can change the way businesses operate, customers experience a place, and a location grows. We started HP Market with a clear goal: to build a landmark that redefines organized commercial space in Old Delhi.
+          </p>
         </div>
       </div>
+
+      {/* STORY BLOCK 1: The Challenge */}
+      <div className={styles.storyBlock}>
+        <div className={`reveal-up ${styles.storyBlockText}`}>
+          <span className={styles.storyBlockEyebrow}>Our Story</span>
+          <h2 className={styles.storyBlockHeadline}>The Challenge.</h2>
+          <p>
+            Old Delhi houses major traders, but aging infrastructure—congested surroundings, limited parking, and unorganized planning—creates daily difficulties for both businesses and their customers. The modern business owner needs more than just space; they need a functioning ecosystem. For decades, wholesale and retail operators have had to compromise between being in the heart of the market and having access to basic operational necessities like loading bays, fire safety, and climate control. This compromise stifles potential and restricts the scale at which modern commerce can operate.
+          </p>
+        </div>
+        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
+          <img 
+            src="/kamla.webp" 
+            alt="The Challenge" 
+            className={styles.storyBlockImage}
+          />
+        </div>
+      </div>
+
+      {/* STORY BLOCK 2: The Idea */}
+      <div className={styles.storyBlock}>
+        <div className={`reveal-up ${styles.storyBlockText}`}>
+          <span className={styles.storyBlockEyebrow}>Our Vision</span>
+          <h2 className={styles.storyBlockHeadline}>The Idea.</h2>
+          <p>
+            HP Market was envisioned as a more organized, modern, and business-oriented commercial environment that retains all the advantages of its established, highly connected location. It’s a carefully crafted platform for future growth. By studying the daily friction points of traditional markets, we conceptualized a space where logistics, customer experience, and business operations seamlessly integrate. The goal was never to move businesses away from Old Delhi, but to elevate how business is conducted right where it matters most.
+          </p>
+        </div>
+        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
+          <img 
+            src="/nse.webp" 
+            alt="The Idea" 
+            className={styles.storyBlockImage}
+          />
+        </div>
+      </div>
+
+      {/* STORY BLOCK 3: The Solution */}
+      <div className={styles.storyBlock}>
+        <div className={`reveal-up ${styles.storyBlockText}`}>
+          <span className={styles.storyBlockEyebrow}>Our Delivery</span>
+          <h2 className={styles.storyBlockHeadline}>Ready For Tomorrow.</h2>
+          <p>
+            We deliver modern commercial infrastructure featuring air-conditioned, ready-to-move-in spaces with professional amenities, providing a secure and accessible environment for growth. Every element adds ongoing value to your business. From dedicated parking and wide corridors to advanced security and power backup, HP Market ensures that your operations never face a standstill. We have built an ecosystem that allows traders to focus entirely on growth, while we take care of the infrastructure.
+          </p>
+        </div>
+        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
+          <img 
+            src="/hp_facade.jpg" 
+            alt="The Solution" 
+            className={styles.storyBlockImage}
+          />
+        </div>
+      </div>
+
+      {/* CTA SECTION (Aligned to left as part of the flow) */}
+      <div className={`reveal-up ${styles.ctaWrapper}`}>
+        <a href="#details" className="sm-btn sm-btn-primary" style={{ marginRight: '16px' }}>
+          Explore HP Market
+        </a>
+        <a href="#contact" className="sm-btn sm-btn-outline">
+          Schedule a Site Visit
+        </a>
+      </div>
+
     </section>
   );
 }
