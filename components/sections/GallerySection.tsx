@@ -1,168 +1,277 @@
 "use client";
-import React from 'react';
+import React, { useState } from "react";
+
+const galleryItems = [
+  {
+    id: 1,
+    title: "Building Exterior",
+    category: "Exterior",
+    src: "/images/gallery/exterior1.jpg",
+    span: "col2 row2", // large hero
+  },
+  {
+    id: 2,
+    title: "Main Hall",
+    category: "Interior",
+    src: "/images/gallery/hall.jpg",
+    span: "col1 row1",
+  },
+  {
+    id: 3,
+    title: "Terrace View",
+    category: "Terrace",
+    src: "/images/gallery/terrace.jpg",
+    span: "col1 row1",
+  },
+  {
+    id: 4,
+    title: "Interior Corridor",
+    category: "Interior",
+    src: "/images/gallery/interior_spaces.png",
+    span: "col1 row2", // tall tile
+  },
+  {
+    id: 5,
+    title: "Interior Spaces",
+    category: "Interior",
+    src: "/images/gallery/interiorS.png",
+    span: "col1 row1",
+  },
+  {
+    id: 6,
+    title: "Terrace Level",
+    category: "Terrace",
+    src: "/images/gallery/terrace2.jpg",
+    span: "col1 row1",
+  },
+  {
+    id: 7,
+    title: "Balcony",
+    category: "Exterior",
+    src: "/images/gallery/balcony.png",
+    span: "col1 row1",
+  },
+  {
+    id: 8,
+    title: "Restrooms",
+    category: "Amenities",
+    src: "/images/gallery/restrooms.png",
+    span: "col1 row1",
+  },
+  {
+    id: 9,
+    title: "Lift",
+    category: "Amenities",
+    src: "/images/gallery/lift.png",
+    span: "col1 row1",
+  },
+];
 
 export default function GallerySection() {
-  const items = [
-    { id: 1, title: 'Main Facade', category: 'Exterior', src: '/images/gallery/exterior.jpg' },
-    { id: 2, title: 'Spacious Corridors', category: 'Interior', src: '/images/gallery/corridors.jpg' },
-    { id: 3, title: 'Grand Entrance', category: 'Infrastructure', src: '/images/gallery/entrance.jpg' },
-  ];
+  const [lightbox, setLightbox] = useState<null | (typeof galleryItems)[0]>(null);
 
   return (
-    <section id="gallery" style={{ 
-      backgroundColor: '#0A192F', 
-      padding: '120px 0',
-      position: 'relative'
-    }}>
-      <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px' }}>
-        
-        {/* Header Area */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'flex-end', 
-          marginBottom: '60px',
-          flexWrap: 'wrap',
-          gap: '24px'
-        }}>
-          <div>
-            <div style={{ 
-              width: '60px', 
-              height: '4px', 
-              backgroundColor: '#f97316', 
-              marginBottom: '24px' 
-            }} />
-            <h2 style={{ 
-              fontSize: '4rem', 
-              fontWeight: 800, 
-              color: '#ffffff', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              margin: 0
-            }}>
-              Curated<br />Spaces.
-            </h2>
-          </div>
-          <p style={{ 
-            maxWidth: '400px', 
-            color: '#94a3b8', 
-            fontSize: '1.125rem', 
-            lineHeight: 1.6,
-            marginBottom: '12px'
-          }}>
-            A glimpse into the refined environment at 1/21 Asaf Ali Road. Designed for the modern business.
-          </p>
-        </div>
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .gal-card { transition: box-shadow 0.4s ease; }
+        .gal-card:hover { box-shadow: 0 30px 60px -10px rgba(0,0,0,0.6) !important; }
+        .gal-img { transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gal-card:hover .gal-img { transform: scale(1.07); }
+        .gal-overlay { transition: background-color 0.4s ease; background-color: rgba(5,15,30,0.15); }
+        .gal-card:hover .gal-overlay { background-color: rgba(5,15,30,0.62); }
+        .gal-label { transition: opacity 0.35s ease, transform 0.35s ease; opacity: 0; transform: translateY(18px); }
+        .gal-card:hover .gal-label { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+          .gal-grid { grid-template-columns: 1fr !important; }
+          .gal-card { grid-column: span 1 !important; grid-row: span 1 !important; height: 260px !important; }
+        }
+      `}} />
 
-        {/* Asymmetrical Grid */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gridAutoRows: 'minmax(300px, auto)',
-          gap: '24px',
-          width: '100%'
-        }}>
-          {items.map((item, i) => (
-            <div 
-              key={item.id}
-              className={`reveal-up reveal-delay-${i}`}
+      <section id="gallery" style={{
+        backgroundColor: "#080f1e",
+        padding: "120px 0",
+        position: "relative",
+      }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.03,
+          backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+          pointerEvents: "none",
+        }} />
+
+        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 32px", position: "relative" }}>
+
+          {/* Header */}
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            marginBottom: "64px",
+            flexWrap: "wrap",
+            gap: "24px",
+          }}>
+            <div>
+              <div style={{ width: 60, height: 4, backgroundColor: "#f97316", marginBottom: 24 }} />
+              <h2 style={{
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontWeight: 800,
+                color: "#ffffff",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                margin: 0,
+              }}>
+                Our Site<br />Gallery.
+              </h2>
+            </div>
+            <p style={{
+              maxWidth: "380px",
+              color: "#94a3b8",
+              fontSize: "1.1rem",
+              lineHeight: 1.7,
+              marginBottom: 12,
+            }}>
+              A first look at HP Market — the landmark commercial development rising at 1/21 Asaf Ali Road, Central Delhi.
+            </p>
+          </div>
+
+          {/* Masonry Grid */}
+          <div
+            className="gal-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gridAutoRows: "280px",
+              gap: "16px",
+            }}
+          >
+            {galleryItems.map((item) => {
+              const isHero = item.span === "col2 row2";
+              const isTall = item.span === "col1 row2";
+              return (
+                <div
+                  key={item.id}
+                  className="gal-card"
+                  onClick={() => setLightbox(item)}
+                  style={{
+                    position: "relative",
+                    borderRadius: "14px",
+                    overflow: "hidden",
+                    cursor: "zoom-in",
+                    gridColumn: isHero ? "span 2" : "span 1",
+                    gridRow: isHero ? "span 2" : isTall ? "span 2" : "span 1",
+                    boxShadow: "0 16px 40px -8px rgba(0,0,0,0.45)",
+                  }}
+                >
+                  <img
+                    className="gal-img"
+                    src={item.src}
+                    alt={item.title}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                  <div className="gal-overlay" style={{ position: "absolute", inset: 0 }} />
+                  <div
+                    className="gal-label"
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      padding: isHero ? "40px" : "24px",
+                    }}
+                  >
+                    <span style={{
+                      display: "block",
+                      color: "#f97316",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "2px",
+                      fontSize: "0.75rem",
+                      marginBottom: 6,
+                    }}>
+                      {item.category}
+                    </span>
+                    <h3 style={{
+                      color: "#ffffff",
+                      fontSize: isHero ? "2rem" : "1.2rem",
+                      fontWeight: 700,
+                      margin: 0,
+                      letterSpacing: "-0.02em",
+                    }}>
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 999,
+            backgroundColor: "rgba(0,0,0,0.92)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "24px",
+            cursor: "zoom-out",
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "88vh" }} onClick={(e) => e.stopPropagation()}>
+            <img
+              src={lightbox.src}
+              alt={lightbox.title}
               style={{
-                position: 'relative',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                gridColumn: i === 0 ? 'span 2' : 'span 1',
-                gridRow: i === 0 ? 'span 2' : 'span 1',
-                height: i === 0 ? '100%' : '320px',
-                minHeight: '320px',
-                cursor: 'pointer',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                maxWidth: "100%",
+                maxHeight: "82vh",
+                borderRadius: "12px",
+                boxShadow: "0 40px 80px rgba(0,0,0,0.8)",
+                objectFit: "contain",
+                display: "block",
               }}
-              onMouseOver={(e) => {
-                const img = e.currentTarget.querySelector('.gallery-img') as HTMLElement;
-                const overlay = e.currentTarget.querySelector('.gallery-overlay') as HTMLElement;
-                const content = e.currentTarget.querySelector('.gallery-content') as HTMLElement;
-                if (img) img.style.transform = 'scale(1.05)';
-                if (overlay) overlay.style.backgroundColor = 'rgba(10, 25, 47, 0.7)';
-                if (content) {
-                  content.style.opacity = '1';
-                  content.style.transform = 'translateY(0)';
-                }
-              }}
-              onMouseOut={(e) => {
-                const img = e.currentTarget.querySelector('.gallery-img') as HTMLElement;
-                const overlay = e.currentTarget.querySelector('.gallery-overlay') as HTMLElement;
-                const content = e.currentTarget.querySelector('.gallery-content') as HTMLElement;
-                if (img) img.style.transform = 'scale(1)';
-                if (overlay) overlay.style.backgroundColor = 'rgba(10, 25, 47, 0.2)';
-                if (content) {
-                  content.style.opacity = '0';
-                  content.style.transform = 'translateY(20px)';
-                }
+            />
+            <div style={{ marginTop: 16, textAlign: "center" }}>
+              <span style={{ color: "#f97316", fontWeight: 600, fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: 2 }}>
+                {lightbox.category}
+              </span>
+              <p style={{ color: "#ffffff", fontWeight: 700, fontSize: "1.3rem", margin: "4px 0 0" }}>
+                {lightbox.title}
+              </p>
+            </div>
+            <button
+              onClick={() => setLightbox(null)}
+              style={{
+                position: "absolute",
+                top: -16,
+                right: -16,
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                backgroundColor: "#f97316",
+                border: "none",
+                color: "#fff",
+                fontSize: "1.1rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: 700,
+                boxShadow: "0 4px 16px rgba(249,115,22,0.5)",
               }}
             >
-              {/* Image */}
-              <img 
-                className="gallery-img"
-                src={item.src} 
-                alt={item.title} 
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
-              />
-              
-              {/* Dark Overlay */}
-              <div 
-                className="gallery-overlay"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundColor: 'rgba(10, 25, 47, 0.2)',
-                  transition: 'background-color 0.4s ease'
-                }}
-              />
-
-              {/* Hover Content */}
-              <div 
-                className="gallery-content"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  padding: '40px',
-                  opacity: 0,
-                  transform: 'translateY(20px)',
-                  transition: 'all 0.4s ease'
-                }}
-              >
-                <span style={{ 
-                  color: '#f97316', 
-                  fontWeight: 600, 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '2px', 
-                  fontSize: '0.875rem',
-                  marginBottom: '8px'
-                }}>
-                  {item.category}
-                </span>
-                <h3 style={{ 
-                  color: '#ffffff', 
-                  fontSize: i === 0 ? '3rem' : '2rem', 
-                  fontWeight: 700,
-                  margin: 0,
-                  letterSpacing: '-0.02em'
-                }}>
-                  {item.title}
-                </h3>
-              </div>
-            </div>
-          ))}
+              ✕
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 }

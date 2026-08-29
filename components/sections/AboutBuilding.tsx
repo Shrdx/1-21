@@ -93,8 +93,8 @@ export default function AboutBuilding() {
         </div>
         <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
           <img 
-            src="/hp_facade.jpg" 
-            alt="The Solution" 
+            src="/ourdelivery.png" 
+            alt="Our Delivery" 
             className={styles.storyBlockImage}
           />
         </div>

@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import BrochureModal from "./BrochureModal";
 
 const navLinks = [
   { title: "Home", href: "/" },
@@ -18,41 +20,22 @@ const navLinks = [
   { title: "Contact", href: "/contact" },
 ];
 
-// HP Market wordmark logo
+// HP Market logo using uploaded image
 function HPMLogo() {
   return (
-    <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
-      {/* Icon mark */}
-      <div style={{
-        width: 36, height: 36, borderRadius: 6,
-        background: "var(--accent-primary)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        flexShrink: 0,
-      }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M3 21V9l9-6 9 6v12H3z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
-          <path d="M9 21v-7h6v7" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
-        </svg>
-      </div>
-      {/* Wordmark */}
-      <div style={{ lineHeight: 1 }}>
-        <span style={{
-          display: "block",
-          fontSize: "1.15rem",
-          fontWeight: 800,
-          letterSpacing: "-0.02em",
-          color: "#ffffff",
-        }}>HP Market</span>
-        <span style={{
-          display: "block",
-          fontSize: "0.65rem",
-          fontWeight: 500,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.55)",
-          marginTop: 1,
-        }}>by SAB Group</span>
-      </div>
+    <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+      <Image
+        src="/hpmarket.png"
+        alt="HP Market by SAB Group"
+        width={120}
+        height={48}
+        style={{
+          objectFit: "contain",
+          maxHeight: "48px",
+          width: "auto",
+        }}
+        priority
+      />
     </Link>
   );
 }
@@ -61,6 +44,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isWhyUsOpen, setIsWhyUsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [brochureOpen, setBrochureOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -232,9 +216,8 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="desktop-ctas" style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-            <a
-              href="/hp_market_brochure.pdf"
-              target="_blank" rel="noopener noreferrer"
+            <button
+              onClick={() => setBrochureOpen(true)}
               className="cta-outline"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
@@ -242,13 +225,14 @@ export default function Navbar() {
                 border: "1px solid rgba(255,255,255,0.3)",
                 padding: "9px 18px", borderRadius: "4px",
                 fontSize: "0.85rem", fontWeight: 500,
+                background: "none", cursor: "pointer",
                 textDecoration: "none", transition: "all 0.2s ease",
                 whiteSpace: "nowrap",
               }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Brochure
-            </a>
+            </button>
 
             <Link
               href="/contact"
@@ -339,17 +323,17 @@ export default function Navbar() {
             )}
 
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "20px" }}>
-              <a
-                href="/hp_market_brochure.pdf"
-                target="_blank" rel="noopener noreferrer"
+              <button
+                onClick={() => { setMobileOpen(false); setBrochureOpen(true); }}
                 style={{
                   textAlign: "center", padding: "12px 20px",
                   color: "#ffffff", border: "1px solid rgba(255,255,255,0.3)",
-                  borderRadius: "4px", fontWeight: 500, textDecoration: "none", fontSize: "0.9rem",
+                  borderRadius: "4px", fontWeight: 500, fontSize: "0.9rem",
+                  background: "none", cursor: "pointer",
                 }}
               >
                 Download Brochure
-              </a>
+              </button>
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
@@ -365,6 +349,11 @@ export default function Navbar() {
           </div>
         )}
       </header>
+
+      <BrochureModal 
+        isOpen={brochureOpen} 
+        onClose={() => setBrochureOpen(false)} 
+      />
     </>
   );
 }

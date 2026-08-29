@@ -1,6 +1,11 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
+import BrochureModal from '../layout/BrochureModal';
 
 export default function CtaSection() {
+  const [brochureOpen, setBrochureOpen] = useState(false);
+
   return (
     <section className="section bg-secondary" style={{ padding: '160px 0', borderTop: '1px solid var(--border-subtle)' }}>
       <div className="container text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -13,16 +18,28 @@ export default function CtaSection() {
         </p>
         
         <div className="reveal-up reveal-delay-2">
-          {/* Custom large primary button */}
-          <a href="#contact" className="sm-btn sm-btn-primary" style={{
-            height: '64px',
-            padding: '0 48px',
-            fontSize: '1rem',
-          }}>
+          {/* Custom large primary button triggering the brochure modal */}
+          <button 
+            onClick={() => setBrochureOpen(true)}
+            className="sm-btn sm-btn-primary" 
+            style={{
+              height: '64px',
+              padding: '0 48px',
+              fontSize: '1rem',
+              cursor: 'pointer',
+              border: 'none',
+              fontFamily: 'inherit'
+            }}
+          >
             View Floorplans
-          </a>
+          </button>
         </div>
       </div>
+      
+      <BrochureModal 
+        isOpen={brochureOpen} 
+        onClose={() => setBrochureOpen(false)} 
+      />
     </section>
   );
 }

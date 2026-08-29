@@ -337,14 +337,14 @@ export default function ContactSection() {
           <div className={`reveal-up reveal-delay-1 ${styles.imageCol}`}>
             <div className={styles.propertyImageWrapper}>
               <img
-                src="/hp_facade.jpg"
+                src="/images/gallery/exterior1.jpg"
                 alt="HP Market exterior — a modern commercial property in Old Delhi"
                 className={styles.propertyImage}
                 loading="lazy"
               />
               <div className={styles.imageOverlay}>
                 <span className={styles.overlayLabel}>HP Market</span>
-                <p className={styles.overlayTitle}>Paharganj, New Delhi</p>
+                <p className={styles.overlayTitle}>Asaf Ali Road, New Delhi</p>
               </div>
             </div>
 
@@ -391,10 +391,10 @@ export default function ContactSection() {
             <MapPinIcon />
             <span className={styles.contactCardLabel}>Visit Us</span>
             <a
-              href="https://maps.google.com/?q=Paharganj,+New+Delhi"
+              href="https://maps.google.com/?q=Asaf+Ali+Road,+New+Delhi"
               target="_blank" rel="noopener noreferrer"
               className={styles.contactCardValue}>
-              Paharganj,<br />New Delhi – 110055
+              Asaf Ali Road,<br />New Delhi – 110055
             </a>
           </div>
 

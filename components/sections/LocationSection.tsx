@@ -72,8 +72,9 @@ export default function LocationSection() {
 
           {/* Right Content - Map */}
           <div style={{ position: 'relative', width: '100%', minHeight: '600px', backgroundColor: '#f3f4f6' }}>
+            {/* Added exact coordinates (28.6423, 77.2322) for HP Market with zoom set to 17 */}
             <iframe 
-              src="https://www.google.com/maps?q=J6VG+QHX,+Asaf+Ali+Rd,+Old+Delhi,+Kucha+Pati+Ram,+Ajmeri+Gate,+New+Delhi,+Delhi,+110006&output=embed" 
+              src="https://maps.google.com/maps?q=28.6423,77.2322(HP+Market,+Ajmeri+Gate,+New+Delhi)&z=17&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
@@ -82,6 +83,48 @@ export default function LocationSection() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Location Advantage Map"
             />
+
+            {/* Custom HP Market label overlay — centered on the map pin location */}
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -100%)',
+              zIndex: 10,
+              pointerEvents: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}>
+              {/* Label bubble */}
+              <div style={{
+                backgroundColor: '#f97316',
+                color: '#ffffff',
+                padding: '8px 14px',
+                borderRadius: '8px',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+                letterSpacing: '0.02em',
+                boxShadow: '0 4px 16px rgba(249,115,22,0.5)',
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                HP Market
+              </div>
+              {/* Downward triangle pointer */}
+              <div style={{
+                width: 0,
+                height: 0,
+                borderLeft: '8px solid transparent',
+                borderRight: '8px solid transparent',
+                borderTop: '8px solid #f97316',
+              }} />
+            </div>
           </div>
 
         </div>
