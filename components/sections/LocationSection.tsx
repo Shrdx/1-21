@@ -74,10 +74,10 @@ export default function LocationSection() {
           <div style={{ position: 'relative', width: '100%', minHeight: '600px', backgroundColor: '#f3f4f6' }}>
             {/* Added exact coordinates (28.6423, 77.2322) for HP Market with zoom set to 17 */}
             <iframe 
-              src="https://maps.google.com/maps?q=28.6423,77.2322(HP+Market,+Ajmeri+Gate,+New+Delhi)&z=17&output=embed" 
+              src="https://maps.google.com/maps?q=1/21+Asaf+Ali+Road,+New+Delhi&z=17&output=embed" 
               width="100%" 
               height="100%" 
-              style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
+              style={{ border: 0, position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }} 
               allowFullScreen={true} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"

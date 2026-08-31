@@ -126,7 +126,7 @@ export default function Navbar() {
           textTransform: "uppercase",
         }}>
           <div style={{ display: "inline-block", animation: "marquee 30s linear infinite" }}>
-            {Array(10).fill("HP Market By SAB Group · Coming Soon · Premium Commercial Spaces in Old Delhi").map((text, i) => (
+            {Array(10).fill("HP Market By SAB Group · Premium Commercial Spaces in Central Delhi").map((text, i) => (
               <span key={i} style={{ margin: "0 48px" }}>
                 <span style={{ color: "rgba(255,255,255,0.6)", marginRight: "48px" }}>✦</span>
                 {text}

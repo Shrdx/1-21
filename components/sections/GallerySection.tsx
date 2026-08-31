@@ -5,6 +5,7 @@ const galleryItems = [
   {
     id: 1,
     title: "Building Exterior",
+    alt: "HP Market Commercial Building Exterior in Central Delhi",
     category: "Exterior",
     src: "/images/gallery/exterior1.jpg",
     span: "col2 row2", // large hero
@@ -12,6 +13,7 @@ const galleryItems = [
   {
     id: 2,
     title: "Main Hall",
+    alt: "Spacious Main Hall for Wholesale Trading at HP Market",
     category: "Interior",
     src: "/images/gallery/hall.jpg",
     span: "col1 row1",
@@ -19,6 +21,7 @@ const galleryItems = [
   {
     id: 3,
     title: "Terrace View",
+    alt: "Terrace View of Central Delhi from HP Market Commercial Complex",
     category: "Terrace",
     src: "/images/gallery/terrace.jpg",
     span: "col1 row1",
@@ -26,6 +29,7 @@ const galleryItems = [
   {
     id: 4,
     title: "Interior Corridor",
+    alt: "Wide Air Conditioned Interior Corridor for Easy Logistics",
     category: "Interior",
     src: "/images/gallery/interior_spaces.png",
     span: "col1 row2", // tall tile
@@ -33,6 +37,7 @@ const galleryItems = [
   {
     id: 5,
     title: "Interior Spaces",
+    alt: "Premium Retail and Wholesale Interior Spaces at Asaf Ali Road",
     category: "Interior",
     src: "/images/gallery/interiorS.png",
     span: "col1 row1",
@@ -40,6 +45,7 @@ const galleryItems = [
   {
     id: 6,
     title: "Terrace Level",
+    alt: "Open Terrace Level for Commercial Use in New Delhi",
     category: "Terrace",
     src: "/images/gallery/terrace2.jpg",
     span: "col1 row1",
@@ -47,6 +53,7 @@ const galleryItems = [
   {
     id: 7,
     title: "Balcony",
+    alt: "Commercial Office Balcony at HP Market",
     category: "Exterior",
     src: "/images/gallery/balcony.png",
     span: "col1 row1",
@@ -54,6 +61,7 @@ const galleryItems = [
   {
     id: 8,
     title: "Restrooms",
+    alt: "Modern Hygienic Restrooms at HP Market Delhi",
     category: "Amenities",
     src: "/images/gallery/restrooms.png",
     span: "col1 row1",
@@ -61,8 +69,25 @@ const galleryItems = [
   {
     id: 9,
     title: "Lift",
+    alt: "High Speed Freight and Passenger Elevators at HP Market",
     category: "Amenities",
     src: "/images/gallery/lift.png",
+    span: "col1 row1",
+  },
+  {
+    id: 10,
+    title: "Air Conditioning",
+    alt: "Central Air Conditioning for Wholesale Shops",
+    category: "Amenities",
+    src: "/images/gallery/AC.png",
+    span: "col1 row1",
+  },
+  {
+    id: 11,
+    title: "Double Shops",
+    alt: "Spacious Double Shops for Wholesale Traders in Central Delhi",
+    category: "Interior",
+    src: "/images/gallery/double_shops.png",
     span: "col1 row1",
   },
 ];
@@ -166,7 +191,7 @@ export default function GallerySection() {
                   <img
                     className="gal-img"
                     src={item.src}
-                    alt={item.title}
+                    alt={item.alt || item.title}
                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                   />
                   <div className="gal-overlay" style={{ position: "absolute", inset: 0 }} />

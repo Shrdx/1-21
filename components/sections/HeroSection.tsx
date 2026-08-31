@@ -66,7 +66,7 @@ export default function HeroSection() {
             fontWeight: 800,
             letterSpacing: '-0.02em',
           }}>
-            HP MARKET:<br/>The Modern Wholesale Hub.
+            HP MARKET:<br/>Premium Commercial Spaces in Central Delhi.
           </h1>
           
           {/* Supporting Text */}
@@ -83,7 +83,7 @@ export default function HeroSection() {
           
           {/* CTAs */}
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
-            <Button href="#contact" style={{ fontSize: '1.125rem', padding: '1rem 2rem' }}>Enquire Now</Button>
+            <Button href="/contact" style={{ fontSize: '1.125rem', padding: '1rem 2rem' }}>Enquire Now</Button>
             
             {/* Custom outline button */}
             <a href="#about" className="sm-btn" style={{

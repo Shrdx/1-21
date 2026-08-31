@@ -85,7 +85,7 @@ function validateEnquiry(form: EnquiryForm): FormErrors {
   if (!form.email.trim()) errors.email = 'Email address is required.';
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Enter a valid email address.';
   if (!form.phone.trim()) errors.phone = 'Phone number is required.';
-  else if (!/^[+\d\s\-()]{7,}$/.test(form.phone)) errors.phone = 'Enter a valid phone number.';
+  else if (!/^[+]?[\d\s\-()]{10,15}$/.test(form.phone.trim())) errors.phone = 'Enter a valid 10-digit phone number.';
   if (!form.interest) errors.interest = 'Please select an option.';
   return errors;
 }
@@ -208,8 +208,11 @@ export default function ContactSection() {
   const [showModal, setShowModal] = useState(false);
 
   const setField = (field: keyof EnquiryForm) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setEnquiry(prev => ({ ...prev, [field]: e.target.value }));
+      // Clear the error for this field as soon as user starts correcting it
+      if (errors[field]) setErrors(prev => { const next = { ...prev }; delete next[field]; return next; });
+    };
 
   const handleEnquiry = async (e: React.FormEvent) => {
     e.preventDefault();

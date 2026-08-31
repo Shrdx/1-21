@@ -16,8 +16,8 @@ export default function AmenitiesSection() {
     },
     {
       icon: <Car size={40} color="#f97316" />,
-      title: 'Ample Parking Space',
-      description: 'Say goodbye to parking woes in Old Delhi. Our multi-level parking facility offers secure spaces for tenants and visitors.'
+      title: 'MCD Parking',
+      description: 'Say goodbye to parking woes in Old Delhi. Our dedicated MCD parking facility offers secure spaces for tenants and visitors.'
     },
     {
       icon: <ShieldCheck size={40} color="#f97316" />,

@@ -1,8 +1,15 @@
 "use client";
 import React from 'react';
 import styles from './AboutBuilding.module.css';
+import DepthCarousel from '../ui/DepthCarousel';
 
 export default function AboutBuilding() {
+  const challengeImages = [
+    { image: '/images/challenge/challenges.jpg', alt: 'Challenge 1' },
+    { image: '/images/challenge/chandni-chowk.jpg', alt: 'Chandi Chowk' },
+    { image: '/images/challenge/challenge2.jpg', alt: 'Challenge 2' }
+  ];
+
   return (
     <section id="about" className={styles.section}>
       
@@ -17,7 +24,7 @@ export default function AboutBuilding() {
       {/* HERO IMAGE */}
       <div className={`reveal-up reveal-delay-1 ${styles.heroImageWrapper}`}>
         <img 
-          src="/new delhi metro.jpg" 
+          src="/ourdelivery.png" 
           alt="HP Market Location" 
           className={styles.heroImage}
         />
@@ -52,14 +59,25 @@ export default function AboutBuilding() {
           <span className={styles.storyBlockEyebrow}>Our Story</span>
           <h2 className={styles.storyBlockHeadline}>The Challenge.</h2>
           <p>
-            Old Delhi houses major traders, but aging infrastructure—congested surroundings, limited parking, and unorganized planning—creates daily difficulties for both businesses and their customers. The modern business owner needs more than just space; they need a functioning ecosystem. For decades, wholesale and retail operators have had to compromise between being in the heart of the market and having access to basic operational necessities like loading bays, fire safety, and climate control. This compromise stifles potential and restricts the scale at which modern commerce can operate.
+            Old Delhi houses major traders, but aging infrastructure—congested surroundings, limited parking, and unorganized planning—creates daily difficulties for both businesses and their customers. The modern business owner needs more than just space; they need a secure environment built for scale. For decades, wholesale and retail operators have had to compromise between being in the heart of the market and having access to basic operational necessities. HP Market eliminates this compromise by providing 24/7 security, dedicated loading bays, and 100% power backup for uninterrupted trade.
           </p>
         </div>
-        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
-          <img 
-            src="/kamla.webp" 
-            alt="The Challenge" 
-            className={styles.storyBlockImage}
+        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`} style={{ height: '600px', position: 'relative' }}>
+          <DepthCarousel
+            items={challengeImages}
+            cardWidth={400}
+            cardHeight={500}
+            showControls={false}
+            depth={220}
+            spread={90}
+            tilt={22}
+            tiltDirection="right"
+            perspective={1400}
+            visibleCards={3}
+            falloff={0.2}
+            blur={6}
+            autoplay
+            loop
           />
         </div>
       </div>
@@ -75,7 +93,7 @@ export default function AboutBuilding() {
         </div>
         <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`}>
           <img 
-            src="/nse.webp" 
+            src="/hp_market_hero.jpg" 
             alt="The Idea" 
             className={styles.storyBlockImage}
           />
