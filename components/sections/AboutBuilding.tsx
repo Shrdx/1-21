@@ -62,20 +62,21 @@ export default function AboutBuilding() {
             Old Delhi houses major traders, but aging infrastructure—congested surroundings, limited parking, and unorganized planning—creates daily difficulties for both businesses and their customers. The modern business owner needs more than just space; they need a secure environment built for scale. For decades, wholesale and retail operators have had to compromise between being in the heart of the market and having access to basic operational necessities. HP Market eliminates this compromise by providing 24/7 security, dedicated loading bays, and 100% power backup for uninterrupted trade.
           </p>
         </div>
-        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`} style={{ height: '600px', position: 'relative' }}>
+        <div className={`reveal-up reveal-delay-1 ${styles.storyBlockImageWrapper}`} style={{ height: '780px', position: 'relative' }}>
           <DepthCarousel
             items={challengeImages}
-            cardWidth={400}
-            cardHeight={500}
+            cardWidth={520}
+            cardHeight={680}
             showControls={false}
-            depth={220}
-            spread={90}
-            tilt={22}
+            showIndicators={false}
+            depth={200}
+            spread={80}
+            tilt={18}
             tiltDirection="right"
             perspective={1400}
             visibleCards={3}
-            falloff={0.2}
-            blur={6}
+            falloff={0.25}
+            blur={5}
             autoplay
             loop
           />
