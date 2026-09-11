@@ -7,7 +7,7 @@ import BrochureModal from "./BrochureModal";
 
 const navLinks = [
   { title: "Home", href: "/" },
-  { title: "About", href: "/#about" },
+  { title: "About", href: "/about" },
   {
     title: "Why Us",
     dropdown: [

@@ -7,7 +7,7 @@ const galleryItems = [
     title: "Building Exterior",
     alt: "HP Market Commercial Building Exterior in Central Delhi",
     category: "Exterior",
-    src: "/images/gallery/exterior1.jpg",
+    src: "/herosection2.png",
     span: "col2 row2", // large hero
   },
   {
@@ -15,7 +15,7 @@ const galleryItems = [
     title: "Main Hall",
     alt: "Spacious Main Hall for Wholesale Trading at HP Market",
     category: "Interior",
-    src: "/images/gallery/hall.jpg",
+    src: "/images/gallery/hall_e.png",
     span: "col1 row1",
   },
   {
@@ -23,7 +23,7 @@ const galleryItems = [
     title: "Terrace View",
     alt: "Terrace View of Central Delhi from HP Market Commercial Complex",
     category: "Terrace",
-    src: "/images/gallery/terrace.jpg",
+    src: "/images/gallery/terr_e.png",
     span: "col1 row1",
   },
   {
@@ -47,7 +47,7 @@ const galleryItems = [
     title: "Terrace Level",
     alt: "Open Terrace Level for Commercial Use in New Delhi",
     category: "Terrace",
-    src: "/images/gallery/terrace2.jpg",
+    src: "/images/gallery/terrace_s.png",
     span: "col1 row1",
   },
   {

@@ -340,7 +340,7 @@ export default function ContactSection() {
           <div className={`reveal-up reveal-delay-1 ${styles.imageCol}`}>
             <div className={styles.propertyImageWrapper}>
               <img
-                src="/images/gallery/exterior1.jpg"
+                src="/herosection2.png"
                 alt="HP Market exterior — a modern commercial property in Old Delhi"
                 className={styles.propertyImage}
                 loading="lazy"

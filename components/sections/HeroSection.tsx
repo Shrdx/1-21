@@ -21,7 +21,7 @@ export default function HeroSection() {
         zIndex: 0,
       }}>
         <Image
-          src="/images/hero/sabmarket-building.jpg"
+          src="/hpbakcground.png"
           alt="Premium Commercial Building"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
