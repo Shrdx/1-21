@@ -1,134 +1,138 @@
 "use client";
 import React from 'react';
-import { ShieldCheck, Zap, Thermometer, Car, Wifi, ArrowUpCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function AmenitiesSection() {
   const amenities = [
-    {
-      icon: <Thermometer size={40} color="#f97316" />,
-      title: 'Central Air Conditioning',
-      description: 'Experience a comfortable shopping and working environment year-round with our state-of-the-art central AC system.'
-    },
-    {
-      icon: <Zap size={40} color="#f97316" />,
-      title: '100% Power Backup',
-      description: 'Never face business interruptions. Our heavy-duty generators ensure your operations run smoothly 24/7.'
-    },
-    {
-      icon: <Car size={40} color="#f97316" />,
-      title: 'MCD Parking',
-      description: 'Say goodbye to parking woes in Old Delhi. Our dedicated MCD parking facility offers secure spaces for tenants and visitors.'
-    },
-    {
-      icon: <ShieldCheck size={40} color="#f97316" />,
-      title: 'Premium Security',
-      description: 'Your safety is our priority. Equipped with CCTV surveillance and round-the-clock trained security personnel.'
-    },
-    {
-      icon: <ArrowUpCircle size={40} color="#f97316" />,
-      title: 'High-Speed Elevators',
-      description: 'Quick and efficient vertical mobility with heavy-load capacity elevators designed specifically for market needs.'
-    },
-    {
-      icon: <Wifi size={40} color="#f97316" />,
-      title: 'Free Wi-Fi Zones',
-      description: 'Stay connected with high-speed internet available throughout the common areas of the complex.'
-    }
+    { num: "01", title: 'CENTRAL AIR CONDITIONING', desc: 'Climate-controlled environment for comfort.', img: "/images/gallery/AC.png", type: 'large' },
+    { num: "02", title: '100% POWER BACKUP', desc: 'Uninterrupted commercial operations.', img: "/hpmarket.png", type: 'medium' },
+    { num: "03", title: 'MCD PARKING', desc: 'Ample space for tenants and visitors.', img: "/ourdelivery.png", type: 'medium' },
+    { num: "04", title: 'PREMIUM SECURITY', desc: '24/7 surveillance across all zones.', img: "/herosection2.png", type: 'wide' },
+    { num: "05", title: 'HIGH-SPEED ELEVATORS', desc: 'Efficient vertical movement.', img: "/images/gallery/lift.png", type: 'small' }
   ];
 
+  const getGridSpan = (type: string) => {
+    switch(type) {
+      case 'large': return { gridColumn: 'span 8', gridRow: 'span 2' };
+      case 'medium': return { gridColumn: 'span 4', gridRow: 'span 1' };
+      case 'wide': return { gridColumn: 'span 8', gridRow: 'span 1' };
+      case 'small': return { gridColumn: 'span 4', gridRow: 'span 1' };
+      default: return { gridColumn: 'span 4', gridRow: 'span 1' };
+    }
+  };
+
   return (
-    <section id="amenities" className="section" style={{ backgroundColor: '#f9fafb', padding: '120px 0' }}>
-      <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px' }}>
+    <section id="amenities" className="section bg-primary" style={{ padding: '140px 0' }}>
+      <div className="container">
         
-        {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '80px' }} className="reveal-up">
-          <h2 className="display-text" style={{ 
-            marginBottom: '20px',
-            textTransform: 'none',
-            color: '#111827',
-            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)'
-          }}>
-            5-Star Amenities
-          </h2>
-          <p style={{ 
-            fontSize: '1.25rem', 
-            fontWeight: 500,
-            color: '#4b5563',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            Designed to support and elevate your business with modern facilities tailored for the wholesale and retail market.
-          </p>
+        {/* Header */}
+        <div style={{ marginBottom: '80px', maxWidth: '700px' }}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="heading-text" 
+            style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}
+          >
+            DESIGNED AROUND<br/>YOUR BUSINESS.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.1 }}
+            className="body-text-lg" 
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            "Modern facilities designed to support the people, products and businesses that keep commerce moving."
+          </motion.p>
         </div>
 
-        {/* Amenities Grid */}
-        <div style={{ 
+        {/* Asymmetric Grid */}
+        <div className="amenities-grid" style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-          gap: '32px' 
+          gridTemplateColumns: 'repeat(12, 1fr)', 
+          gridAutoRows: '340px',
+          gap: '24px' 
         }}>
-          {amenities.map((amenity, index) => (
-            <div 
-              key={index} 
-              className={`reveal-up reveal-delay-${index % 3}`}
-              style={{
-                backgroundColor: '#ffffff',
-                padding: '40px 32px',
-                borderRadius: '16px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                border: '1px solid #f3f4f6',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '24px',
-                cursor: 'default'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
-                e.currentTarget.style.borderColor = '#fdba74';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)';
-                e.currentTarget.style.borderColor = '#f3f4f6';
-              }}
-            >
-              <div style={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                backgroundColor: '#fff7ed',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '8px'
-              }}>
-                {amenity.icon}
-              </div>
-              
-              <div>
-                <h3 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: 700, 
-                  color: '#111827',
-                  marginBottom: '12px'
+          {amenities.map((amenity, index) => {
+            const spanStyle = getGridSpan(amenity.type);
+            return (
+              <motion.div 
+                key={amenity.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.1 * index }}
+                className="amenity-card"
+                style={{
+                  ...spanStyle,
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: '12px',
+                  backgroundColor: '#f5f5f5',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  const img = e.currentTarget.querySelector('.amenity-img') as HTMLElement;
+                  if(img) img.style.transform = 'scale(1.05)';
+                  const overlay = e.currentTarget.querySelector('.amenity-overlay') as HTMLElement;
+                  if(overlay) overlay.style.backgroundColor = 'rgba(15,23,42,0.6)';
+                  const arrow = e.currentTarget.querySelector('.amenity-arrow') as HTMLElement;
+                  if(arrow) {
+                    arrow.style.opacity = '1';
+                    arrow.style.transform = 'translateX(0)';
+                  }
+                  const textContent = e.currentTarget.querySelector('.amenity-text') as HTMLElement;
+                  if(textContent) textContent.style.transform = 'translateY(-8px)';
+                }}
+                onMouseLeave={(e) => {
+                  const img = e.currentTarget.querySelector('.amenity-img') as HTMLElement;
+                  if(img) img.style.transform = 'scale(1)';
+                  const overlay = e.currentTarget.querySelector('.amenity-overlay') as HTMLElement;
+                  if(overlay) overlay.style.backgroundColor = 'rgba(15,23,42,0.4)';
+                  const arrow = e.currentTarget.querySelector('.amenity-arrow') as HTMLElement;
+                  if(arrow) {
+                    arrow.style.opacity = '0';
+                    arrow.style.transform = 'translateX(-10px)';
+                  }
+                  const textContent = e.currentTarget.querySelector('.amenity-text') as HTMLElement;
+                  if(textContent) textContent.style.transform = 'translateY(0)';
+                }}
+              >
+                <div className="amenity-img" style={{ position: 'absolute', inset: 0, transition: 'transform 0.6s ease' }}>
+                  <Image src={amenity.img} alt={amenity.title} fill style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="amenity-overlay" style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(15,23,42,0.4)', transition: 'background-color 0.4s ease' }} />
+                
+                <div className="amenity-text" style={{ 
+                  position: 'absolute', 
+                  bottom: 0, left: 0, right: 0, 
+                  padding: '32px',
+                  display: 'flex', flexDirection: 'column',
+                  transition: 'transform 0.4s ease'
                 }}>
-                  {amenity.title}
-                </h3>
-                <p style={{ 
-                  fontSize: '1.05rem', 
-                  lineHeight: 1.6,
-                  color: '#4b5563' 
-                }}>
-                  {amenity.description}
-                </p>
-              </div>
-            </div>
-          ))}
+                  <div className="label-text" style={{ color: 'var(--accent-primary)', marginBottom: '8px' }}>{amenity.num}</div>
+                  <h3 style={{ color: '#fff', fontSize: '1.5rem', fontWeight: 600, marginBottom: '8px', letterSpacing: '-0.01em' }}>{amenity.title}</h3>
+                  <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+                    <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', maxWidth: '80%' }}>{amenity.desc}</p>
+                    <div className="amenity-arrow" style={{ color: 'var(--accent-primary)', opacity: 0, transform: 'translateX(-10px)', transition: 'all 0.4s ease' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-
       </div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 900px) {
+          .amenities-grid { display: flex !important; flex-direction: column !important; }
+          .amenity-card { height: 400px !important; }
+        }
+      `}} />
     </section>
   );
 }

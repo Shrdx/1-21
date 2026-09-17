@@ -1,9 +1,36 @@
 "use client";
 import React from 'react';
-import Button from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    }
+  };
+
+  const lineVariants = {
+    hidden: { y: "110%" },
+    visible: { 
+      y: "0%", 
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
   return (
     <section className="section" style={{ 
       minHeight: '100vh', 
@@ -12,108 +39,136 @@ export default function HeroSection() {
       justifyContent: 'flex-start',
       position: 'relative', 
       overflow: 'hidden',
-      paddingTop: '80px' // for the navbar
+      paddingTop: '68px', // for the navbar
+      paddingBottom: '0'
     }}>
-      {/* Background Image */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 0,
-      }}>
+      {/* Background Image with slow scale */}
+      <motion.div 
+        initial={{ scale: 1.03 }}
+        animate={{ scale: 1.0 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+        }}
+      >
         <Image
-          src="/hpbakcground.png"
-          alt="Premium Commercial Building"
+          src="/hero-image.png"
+          alt="HP Market Building"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           priority
         />
-        {/* Gradient Overlay for text legibility on the left, clear on the right */}
+        {/* Gradient Overlay for text legibility */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.3) 50%, rgba(15, 23, 42, 0) 100%)',
+          background: 'linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 50%, rgba(15, 23, 42, 0) 100%)',
           zIndex: 1,
         }} />
-        {/* Bottom gradient to blend with next section if it's dark */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '150px',
-          background: 'linear-gradient(to top, #0f172a 0%, transparent 100%)',
-          zIndex: 1,
-        }} />
-      </div>
+      </motion.div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-        <div className="reveal-up" style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'flex-start', 
-          textAlign: 'left',
-          maxWidth: '900px',
-          padding: '2rem 0',
-        }}>
-          
-          {/* Main Hook Text */}
-          <h1 className="display-text" style={{ 
-            marginBottom: '1rem', 
-            color: '#FFFFFF',
-            textShadow: '0 4px 20px rgba(0,0,0,0.5)',
-            lineHeight: 1.1,
-            fontSize: 'clamp(3rem, 5vw, 5rem)',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'flex-start', 
+            textAlign: 'left',
+            maxWidth: '800px',
+            padding: '2rem 0',
+          }}
+        >
+          {/* Eyebrow */}
+          <motion.div variants={fadeUpVariants} className="label-text" style={{ 
+            color: 'var(--accent-primary)', 
+            marginBottom: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px'
           }}>
-            HP MARKET:<br/>Premium Commercial Spaces in Central Delhi.
+            <span style={{ width: '32px', height: '1px', backgroundColor: 'var(--accent-primary)' }}></span>
+            ASAF ALI ROAD · CENTRAL DELHI
+          </motion.div>
+          
+          {/* Main Headline - Text Mask Animation */}
+          <h1 className="display-text" style={{ 
+            marginBottom: '1.5rem', 
+            color: '#FFFFFF',
+          }}>
+            <div style={{ overflow: 'hidden' }}>
+              <motion.div variants={lineVariants}>OLD DELHI'S</motion.div>
+            </div>
+            <div style={{ overflow: 'hidden' }}>
+              <motion.div variants={lineVariants}>BUSINESS.</motion.div>
+            </div>
+            <div style={{ overflow: 'hidden', color: 'var(--accent-primary)' }}>
+              <motion.div variants={lineVariants}>REIMAGINED.</motion.div>
+            </div>
           </h1>
           
           {/* Supporting Text */}
-          <p className="body-text" style={{ 
-            marginBottom: '2.5rem', 
-            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            maxWidth: '650px',
-            textShadow: '0 2px 10px rgba(0,0,0,0.5)',
-            fontWeight: 500,
+          <motion.p variants={fadeUpVariants} className="body-text-lg" style={{ 
+            marginBottom: '3rem', 
+            color: 'rgba(255, 255, 255, 0.9)',
+            maxWidth: '600px',
           }}>
-            Hardware & Powertool Market in the Heart of Central Delhi, Asaf Ali Road.
-          </p>
+            A modern commercial destination designed for wholesale, retail and businesses that demand more from their workspace.
+          </motion.p>
           
           {/* CTAs */}
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
-            <Button href="/contact" style={{ fontSize: '1.125rem', padding: '1rem 2rem' }}>Enquire Now</Button>
+          <motion.div variants={fadeUpVariants} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+            <Link href="#spaces" className="sm-btn sm-btn-primary" style={{ padding: '0 40px', height: '56px', fontSize: '0.95rem' }}>
+              EXPLORE SPACES &rarr;
+            </Link>
             
-            {/* Custom outline button */}
-            <a href="#about" className="sm-btn" style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              color: '#FFFFFF',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              borderRadius: 'var(--rounded-none)',
-              backdropFilter: 'blur(8px)',
-              transition: 'all 0.3s ease',
-              textDecoration: 'none',
-              fontSize: '1.125rem',
-              padding: '1rem 2rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 500,
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-              e.currentTarget.style.borderColor = '#FFFFFF';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            <Link href="/contact" className="sm-btn sm-btn-outline" style={{ 
+              padding: '0 40px', 
+              height: '56px', 
+              fontSize: '0.95rem',
+              color: '#fff',
+              borderColor: 'rgba(255,255,255,0.3)',
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              backdropFilter: 'blur(10px)'
             }}>
-              Explore Spaces
-            </a>
+              BOOK A SITE VISIT &rarr;
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Bottom Indicators */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        style={{
+          position: 'absolute',
+          bottom: '40px',
+          left: '0',
+          right: '0',
+          zIndex: 2,
+        }}
+      >
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="label-text" style={{ color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            SCROLL TO DISCOVER
+            <motion.span
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              ↓
+            </motion.span>
+          </div>
+          <div className="label-text" style={{ color: '#fff' }}>
+            01 <span style={{ color: 'rgba(255,255,255,0.4)' }}>/ 04</span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

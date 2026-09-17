@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from 'next/link';
 
 const galleryItems = [
   {
@@ -103,10 +104,12 @@ export default function GallerySection() {
         .gal-card:hover { box-shadow: 0 30px 60px -10px rgba(0,0,0,0.6) !important; }
         .gal-img { transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
         .gal-card:hover .gal-img { transform: scale(1.07); }
-        .gal-overlay { transition: background-color 0.4s ease; background-color: rgba(5,15,30,0.15); }
-        .gal-card:hover .gal-overlay { background-color: rgba(5,15,30,0.62); }
+        .gal-overlay { transition: background-color 0.4s ease; background-color: rgba(15,23,42,0.2); }
+        .gal-card:hover .gal-overlay { background-color: rgba(15,23,42,0.7); }
         .gal-label { transition: opacity 0.35s ease, transform 0.35s ease; opacity: 0; transform: translateY(18px); }
         .gal-card:hover .gal-label { opacity: 1; transform: translateY(0); }
+        .gal-arrow { transition: transform 0.3s ease; }
+        .gal-card:hover .gal-arrow { transform: translateX(5px); }
         @media (max-width: 768px) {
           .gal-grid { grid-template-columns: 1fr !important; }
           .gal-card { grid-column: span 1 !important; grid-row: span 1 !important; height: 260px !important; }
@@ -114,17 +117,10 @@ export default function GallerySection() {
       `}} />
 
       <section id="gallery" style={{
-        backgroundColor: "#080f1e",
-        padding: "120px 0",
+        backgroundColor: "var(--bg-dark-slate)",
+        padding: "140px 0",
         position: "relative",
       }}>
-        <div style={{
-          position: "absolute", inset: 0, opacity: 0.03,
-          backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          pointerEvents: "none",
-        }} />
-
         <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 32px", position: "relative" }}>
 
           {/* Header */}
@@ -132,32 +128,45 @@ export default function GallerySection() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
-            marginBottom: "64px",
+            marginBottom: "80px",
             flexWrap: "wrap",
             gap: "24px",
           }}>
             <div>
-              <div style={{ width: 60, height: 4, backgroundColor: "#f97316", marginBottom: 24 }} />
-              <h2 style={{
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                fontWeight: 800,
+              <div className="label-text" style={{ color: 'var(--accent-primary)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ width: '32px', height: '1px', backgroundColor: 'var(--accent-primary)' }}></span>
+                A FIRST LOOK / 03
+              </div>
+              <h2 className="heading-text" style={{
                 color: "#ffffff",
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
                 margin: 0,
               }}>
-                Our Site<br />Gallery.
+                SEE THE<br />DIFFERENCE.
               </h2>
             </div>
-            <p style={{
-              maxWidth: "380px",
-              color: "#94a3b8",
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
-              marginBottom: 12,
-            }}>
-              A first look at HP Market — the landmark commercial development rising at 1/21 Asaf Ali Road, Central Delhi.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '24px' }}>
+              <p className="body-text-lg" style={{
+                maxWidth: "450px",
+                color: "rgba(255,255,255,0.7)",
+                margin: 0,
+              }}>
+                Explore the spaces, interiors and details designed to make everyday business more seamless.
+              </p>
+              <Link href="/gallery" className="label-text" style={{ 
+                color: '#fff', 
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                borderBottom: '1px solid var(--accent-primary)',
+                paddingBottom: '4px'
+              }}>
+                VIEW FULL GALLERY
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
           </div>
 
           {/* Masonry Grid */}
@@ -166,8 +175,8 @@ export default function GallerySection() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gridAutoRows: "280px",
-              gap: "16px",
+              gridAutoRows: "320px",
+              gap: "24px",
             }}
           >
             {galleryItems.map((item) => {
@@ -182,10 +191,10 @@ export default function GallerySection() {
                     position: "relative",
                     borderRadius: "14px",
                     overflow: "hidden",
-                    cursor: "zoom-in",
+                    cursor: "pointer",
                     gridColumn: isHero ? "span 2" : "span 1",
                     gridRow: isHero ? "span 2" : isTall ? "span 2" : "span 1",
-                    boxShadow: "0 16px 40px -8px rgba(0,0,0,0.45)",
+                    border: '1px solid rgba(255,255,255,0.05)'
                   }}
                 >
                   <img
@@ -202,29 +211,35 @@ export default function GallerySection() {
                       bottom: 0,
                       left: 0,
                       right: 0,
-                      padding: isHero ? "40px" : "24px",
+                      padding: isHero ? "40px" : "32px",
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end'
                     }}
                   >
-                    <span style={{
-                      display: "block",
-                      color: "#f97316",
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      letterSpacing: "2px",
-                      fontSize: "0.75rem",
-                      marginBottom: 6,
-                    }}>
-                      {item.category}
-                    </span>
-                    <h3 style={{
-                      color: "#ffffff",
-                      fontSize: isHero ? "2rem" : "1.2rem",
-                      fontWeight: 700,
-                      margin: 0,
-                      letterSpacing: "-0.02em",
-                    }}>
-                      {item.title}
-                    </h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                      <div>
+                        <span className="label-text" style={{
+                          display: "block",
+                          color: "var(--accent-primary)",
+                          marginBottom: 8,
+                        }}>
+                          {item.category}
+                        </span>
+                        <h3 style={{
+                          color: "#ffffff",
+                          fontSize: isHero ? "2rem" : "1.5rem",
+                          fontWeight: 600,
+                          margin: 0,
+                          letterSpacing: "-0.01em",
+                        }}>
+                          {item.title}
+                        </h3>
+                      </div>
+                      <div className="gal-arrow" style={{ color: 'var(--accent-primary)' }}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -241,13 +256,13 @@ export default function GallerySection() {
             position: "fixed",
             inset: 0,
             zIndex: 999,
-            backgroundColor: "rgba(0,0,0,0.92)",
+            backgroundColor: "rgba(15,23,42,0.95)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: "24px",
             cursor: "zoom-out",
-            backdropFilter: "blur(8px)",
+            backdropFilter: "blur(12px)",
           }}
         >
           <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "88vh" }} onClick={(e) => e.stopPropagation()}>
@@ -263,11 +278,11 @@ export default function GallerySection() {
                 display: "block",
               }}
             />
-            <div style={{ marginTop: 16, textAlign: "center" }}>
-              <span style={{ color: "#f97316", fontWeight: 600, fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: 2 }}>
+            <div style={{ marginTop: 24, textAlign: "center", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span className="label-text" style={{ color: "var(--accent-primary)", marginBottom: '8px' }}>
                 {lightbox.category}
               </span>
-              <p style={{ color: "#ffffff", fontWeight: 700, fontSize: "1.3rem", margin: "4px 0 0" }}>
+              <p style={{ color: "#ffffff", fontWeight: 600, fontSize: "1.5rem", margin: 0 }}>
                 {lightbox.title}
               </p>
             </div>
@@ -275,21 +290,20 @@ export default function GallerySection() {
               onClick={() => setLightbox(null)}
               style={{
                 position: "absolute",
-                top: -16,
-                right: -16,
-                width: 40,
-                height: 40,
+                top: -24,
+                right: -24,
+                width: 48,
+                height: 48,
                 borderRadius: "50%",
-                backgroundColor: "#f97316",
+                backgroundColor: "var(--accent-primary)",
                 border: "none",
                 color: "#fff",
-                fontSize: "1.1rem",
+                fontSize: "1.2rem",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontWeight: 700,
-                boxShadow: "0 4px 16px rgba(249,115,22,0.5)",
+                boxShadow: "0 4px 16px rgba(255,106,0,0.5)",
               }}
             >
               ✕
