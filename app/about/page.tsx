@@ -50,6 +50,7 @@ const FadeUp = ({ children, delay = 0, className = '' }: { children: React.React
 
 /* ── Page ────────────────────────────────────────────── */
 export default function AboutPage() {
+  const [activePillar, setActivePillar] = useState(0);
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(heroScroll, [0, 1], ['0%', '25%']);
@@ -208,10 +209,7 @@ export default function AboutPage() {
 
         {/* ══════════════════ 4. PILLARS ══════════════════ */}
         <section className={styles.pillarsSection}>
-          {/* Ambient glow orbs */}
-          <div className={styles.bentoOrb1} />
-          <div className={styles.bentoOrb2} />
-          <div className={styles.bentoOrb3} />
+          {/* Removed ambient glow orbs for a simpler design */}
 
           <div className={styles.pillarsInner}>
             <FadeUp className={styles.pillarsHeader}>
@@ -225,90 +223,105 @@ export default function AboutPage() {
               </p>
             </FadeUp>
 
-            <div className={styles.bentoGrid}>
-              {[
-                {
-                  num: '01',
-                  icon: <Zap size={32} />,
-                  title: 'Uninterrupted Power',
-                  tag: '100% Backup',
-                  desc: 'Full power backup means your operations never pause — trading floor, showroom, or warehouse.',
-                  wide: true,
-                  accent: '#FF6A00',
-                },
-                {
-                  num: '02',
-                  icon: <Wind size={32} />,
-                  title: 'Comfort-First Climate',
-                  tag: 'Central AC',
-                  desc: 'Central air conditioning creates a professional environment that improves productivity year-round.',
-                  wide: false,
-                  accent: '#FF8C42',
-                },
-                {
-                  num: '03',
-                  icon: <ShieldCheck size={32} />,
-                  title: 'Round-the-Clock Security',
-                  tag: '24 / 7',
-                  desc: '24/7 teams, CCTV, and secure access points protect your assets at every hour.',
-                  wide: false,
-                  accent: '#FFB347',
-                },
-                {
-                  num: '04',
-                  icon: <Truck size={32} />,
-                  title: 'Logistics-Ready Infrastructure',
-                  tag: 'Dedicated Zone',
-                  desc: 'Dedicated loading zone keeps goods moving without disrupting foot traffic, with heavy-capacity elevators.',
-                  wide: false,
-                  accent: '#FF6A00',
-                },
-                {
-                  num: '05',
-                  icon: <ParkingSquare size={32} />,
-                  title: 'MCD Parking Access',
-                  tag: 'Direct Access',
-                  desc: 'Direct access to dedicated MCD parking — effortless for customers and suppliers to reach you.',
-                  wide: false,
-                  accent: '#FF8C42',
-                },
-                {
-                  num: '06',
-                  icon: <Wifi size={32} />,
-                  title: 'Connected Workspaces',
-                  tag: 'High-Speed Wi-Fi',
-                  desc: 'High-speed Wi-Fi across all common areas — payments, inventory, video calls, always connected.',
-                  wide: true,
-                  accent: '#FFB347',
-                },
-              ].map((p, i) => (
-                <motion.div
-                  key={i}
-                  className={`${styles.bentoCard} ${p.wide ? styles.bentoCardWide : ''}`}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                  style={{ '--card-accent': p.accent } as React.CSSProperties}
-                >
-                  {/* Top row */}
-                  <div className={styles.bentoCardTop}>
-                    <div className={styles.bentoIconWrap}>{p.icon}</div>
-                    <span className={styles.bentoNum}>{p.num}</span>
-                  </div>
+            <div className={styles.tabsContainer}>
+              {/* Left Side: Tabs List */}
+              <div className={styles.tabsList}>
+                {[
+                  {
+                    num: '01',
+                    icon: <Zap size={24} />,
+                    title: 'Uninterrupted Power',
+                    tag: '100% Backup',
+                    desc: 'Full power backup means your operations never pause — trading floor, showroom, or warehouse.',
+                    img: '/godownHP.png'
+                  },
+                  {
+                    num: '02',
+                    icon: <Wind size={24} />,
+                    title: 'Comfort-First Climate',
+                    tag: 'Central AC',
+                    desc: 'Central air conditioning creates a professional environment that improves productivity year-round.',
+                    img: '/images/gallery/AC.png'
+                  },
+                  {
+                    num: '03',
+                    icon: <ShieldCheck size={24} />,
+                    title: 'Round-the-Clock Security',
+                    tag: '24 / 7',
+                    desc: '24/7 teams, CCTV, and secure access points protect your assets at every hour.',
+                    img: '/herosection2.png'
+                  },
+                  {
+                    num: '04',
+                    icon: <Truck size={24} />,
+                    title: 'Logistics-Ready Infrastructure',
+                    tag: 'Dedicated Zone',
+                    desc: 'Dedicated loading zone keeps goods moving without disrupting foot traffic, with heavy-capacity elevators.',
+                    img: '/challenges.jpg'
+                  },
+                  {
+                    num: '05',
+                    icon: <ParkingSquare size={24} />,
+                    title: 'MCD Parking Access',
+                    tag: 'Direct Access',
+                    desc: 'Direct access to dedicated MCD parking — effortless for customers and suppliers to reach you.',
+                    img: '/ourdelivery.png'
+                  },
+                  {
+                    num: '06',
+                    icon: <Wifi size={24} />,
+                    title: 'Connected Workspaces',
+                    tag: 'High-Speed Wi-Fi',
+                    desc: 'High-speed Wi-Fi across all common areas — payments, inventory, video calls, always connected.',
+                    img: '/images/gallery/interior_corridor.jpg'
+                  },
+                ].map((p, i) => {
+                  const isActive = i === activePillar;
+                  return (
+                    <div
+                      key={i}
+                      className={`${styles.tabItem} ${isActive ? styles.tabActive : ''}`}
+                      onClick={() => setActivePillar(i)}
+                    >
+                      <div className={styles.tabIconWrap}>{p.icon}</div>
+                      <div className={styles.tabTextWrap}>
+                        <h3 className={styles.tabTitle}>{p.title}</h3>
+                        {isActive && (
+                          <motion.p 
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className={styles.tabDesc}
+                          >
+                            {p.desc}
+                          </motion.p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
 
-                  {/* Content */}
-                  <div className={styles.bentoCardBody}>
-                    <span className={styles.bentoTag}>{p.tag}</span>
-                    <h3 className={styles.bentoTitle}>{p.title}</h3>
-                    <p className={styles.bentoDesc}>{p.desc}</p>
-                  </div>
-
-                  {/* Glow corner */}
-                  <div className={styles.bentoGlow} />
-                </motion.div>
-              ))}
+              {/* Right Side: Image Display */}
+              <div className={styles.tabImagePanel}>
+                {[
+                  '/godownHP.png',
+                  '/images/gallery/AC.png',
+                  '/herosection2.png',
+                  '/challenges.jpg',
+                  '/ourdelivery.png',
+                  '/images/gallery/interior_corridor.jpg'
+                ].map((img, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: i === activePillar ? 1 : 0, zIndex: i === activePillar ? 2 : 1 }}
+                    transition={{ duration: 0.5 }}
+                    className={styles.tabImageWrap}
+                  >
+                    <Image src={img} alt={`Pillar ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
