@@ -2,11 +2,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 export default function HeroSection() {
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -14,7 +14,7 @@ export default function HeroSection() {
     }
   };
 
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: { y: "110%" },
     visible: { 
       y: "0%", 
@@ -22,7 +22,7 @@ export default function HeroSection() {
     }
   };
 
-  const fadeUpVariants = {
+  const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: { 
       opacity: 1, 
