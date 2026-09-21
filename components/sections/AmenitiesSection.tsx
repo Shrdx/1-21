@@ -6,15 +6,15 @@ import Image from 'next/image';
 export default function AmenitiesSection() {
   const amenities = [
     { num: "01", title: 'CENTRAL AIR CONDITIONING', desc: 'Climate-controlled environment for comfort.', img: "/images/gallery/AC.png", type: 'large' },
-    { num: "02", title: '100% POWER BACKUP', desc: 'Uninterrupted commercial operations.', img: "/hpmarket.png", type: 'medium' },
-    { num: "03", title: 'MCD PARKING', desc: 'Ample space for tenants and visitors.', img: "/ourdelivery.png", type: 'medium' },
-    { num: "04", title: 'PREMIUM SECURITY', desc: '24/7 surveillance across all zones.', img: "/herosection2.png", type: 'wide' },
-    { num: "05", title: 'HIGH-SPEED ELEVATORS', desc: 'Efficient vertical movement.', img: "/images/gallery/lift.png", type: 'small' }
+    { num: "02", title: 'MCD PARKING', desc: 'Ample space for tenants and visitors.', img: "/ourdelivery.png", type: 'tall' },
+    { num: "03", title: 'PREMIUM SECURITY', desc: '24/7 surveillance across all zones.', img: "/herosection2.png", type: 'wide' },
+    { num: "04", title: 'HIGH-SPEED ELEVATORS', desc: 'Efficient vertical movement.', img: "/images/gallery/lift.png", type: 'small' }
   ];
 
   const getGridSpan = (type: string) => {
     switch(type) {
       case 'large': return { gridColumn: 'span 8', gridRow: 'span 2' };
+      case 'tall': return { gridColumn: 'span 4', gridRow: 'span 2' };
       case 'medium': return { gridColumn: 'span 4', gridRow: 'span 1' };
       case 'wide': return { gridColumn: 'span 8', gridRow: 'span 1' };
       case 'small': return { gridColumn: 'span 4', gridRow: 'span 1' };

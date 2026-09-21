@@ -18,9 +18,8 @@ export default function Infrastructure() {
     { num: "01", title: "SECURITY", desc: "24/7 surveillance and controlled access.", img: "/challenge2.JPG" },
     { num: "02", title: "LOGISTICS", desc: "Dedicated infrastructure for loading and movement.", img: "/challenges.jpg" },
     { num: "03", title: "COMFORT", desc: "Central air conditioning across the commercial environment.", img: "/office.jpg" },
-    { num: "04", title: "POWER", desc: "100% power backup for uninterrupted operations.", img: "/godownHP.png" },
-    { num: "05", title: "ACCESS", desc: "High-speed elevators designed for commercial requirements.", img: "/shopsHP.png" },
-    { num: "06", title: "CONNECTIVITY", desc: "Prime Central Delhi location.", img: "/kamla.webp" },
+    { num: "04", title: "ACCESS", desc: "High-speed elevators designed for commercial requirements.", img: "/shopsHP.png" },
+    { num: "05", title: "CONNECTIVITY", desc: "Prime Central Delhi location.", img: "/kamla.webp" },
   ];
 
   return (

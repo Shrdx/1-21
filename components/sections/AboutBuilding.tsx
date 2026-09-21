@@ -163,7 +163,6 @@ export default function AboutBuilding() {
                   <li>Organized circulation</li>
                   <li>MCD parking</li>
                   <li>24/7 security</li>
-                  <li>100% power backup</li>
                   <li>Air-conditioned environment</li>
                 </ul>
               </div>
@@ -200,10 +199,9 @@ export default function AboutBuilding() {
           {[
             { num: '01', title: 'MOVE GOODS', desc: 'Dedicated infrastructure designed for everyday loading and movement.', img: '/ourdelivery.png' },
             { num: '02', title: 'MOVE PEOPLE', desc: 'High-speed, heavy-load elevators designed for commercial requirements.', img: '/images/gallery/lift.png' },
-            { num: '03', title: 'KEEP OPERATING', desc: '100% power backup for uninterrupted business operations.', img: '/hpmarket.png' },
-            { num: '04', title: 'STAY COMFORTABLE', desc: 'Central air conditioning across the commercial environment.', img: '/images/gallery/AC.png' },
-            { num: '05', title: 'STAY SECURE', desc: '24/7 security and CCTV surveillance.', img: '/herosection2.png' },
-            { num: '06', title: 'STAY CONNECTED', desc: 'Free Wi-Fi zones across common areas.', img: '/images/gallery/interior_corridor.jpg' },
+            { num: '03', title: 'STAY COMFORTABLE', desc: 'Central air conditioning across the commercial environment.', img: '/images/gallery/AC.png' },
+            { num: '04', title: 'STAY SECURE', desc: '24/7 security and CCTV surveillance.', img: '/herosection2.png' },
+            { num: '05', title: 'STAY CONNECTED', desc: 'Free Wi-Fi zones across common areas.', img: '/images/gallery/interior_corridor.jpg' },
           ].map((card, i) => (
             <div key={i} className={styles.scrollCard}>
               <div className={styles.cardBg}>

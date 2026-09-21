@@ -59,7 +59,7 @@ export default function FinalCta() {
             </Link>
           </div>
 
-          <Link href="/brochure" className="label-text" style={{ 
+          <Link href="/hp_market_final.pdf" target="_blank" rel="noopener noreferrer" className="label-text" style={{ 
             color: '#fff', 
             textDecoration: 'none',
             display: 'inline-flex',

@@ -35,21 +35,21 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
   const validate = () => {
     const newErrors = { name: "", email: "", phone: "" };
     let valid = true;
-    
+
     const nameRegex = /^[a-zA-Z\s]{2,50}$/;
-    if (!form.name.trim()) { 
-      newErrors.name = "Name is required"; valid = false; 
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required"; valid = false;
     } else if (!nameRegex.test(form.name.trim())) {
-      newErrors.name = "Please enter a valid name (letters only)"; valid = false; 
+      newErrors.name = "Please enter a valid name (letters only)"; valid = false;
     }
-    
+
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!form.email.trim()) {
       newErrors.email = "Email is required"; valid = false;
     } else if (!emailRegex.test(form.email.trim())) {
       newErrors.email = "Please enter a valid email address"; valid = false;
     }
-    
+
     const cleanPhone = form.phone.replace(/[\s\-()]/g, '');
     const phoneRegex = /^(?:\+?91)?([6-9]\d{9})$/;
     if (!form.phone.trim()) {
@@ -70,14 +70,15 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
     setLoading(false);
     setSubmitted(true);
     setTimeout(() => {
-      window.open("/hp_market_brochure.pdf", "_blank", "noopener,noreferrer");
+      window.open("/hp_market_final.pdf", "_blank", "noopener,noreferrer");
       onClose();
     }, 1200);
   };
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes bm-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes bm-card-in { from { opacity: 0; transform: translateY(28px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
         @keyframes bm-spin { to { transform: rotate(360deg); } }
@@ -239,7 +240,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     </>
                   ) : (
                     <>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                       Get Brochure
                     </>
                   )}
@@ -259,7 +260,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                 margin: "0 auto 20px",
                 boxShadow: "0 8px 24px rgba(34,197,94,0.4)",
               }}>
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
               </div>
               <h3 style={{ color: "#111827", fontSize: "1.4rem", fontWeight: 800, margin: "0 0 10px" }}>
                 Thank You!
